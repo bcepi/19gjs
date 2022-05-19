@@ -8,5 +8,5 @@ if(gradosCelsius=== null){
     console.log('La temperatura ingresada no es valida');
 }else{
     let gradosFahrenheit = ((gradosCelsius*(9/5)) + 32);
-    console.log(`La temperatura en tu ciudad en grados Fahrenheit es ${gradosFahrenheit}`);
+    window.alert(`La temperatura en tu ciudad en grados Fahrenheit es ${gradosFahrenheit}`);
 }
