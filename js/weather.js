@@ -25,7 +25,11 @@ if(tempC === null){
 
 let tempF = ( ( tempC * 9 ) / 5 ) + 32;
 
-let climaMin=clima.toLocaleLowerCase
+if(clima === null){
+    clima='a';
+}
+    
+let climaMin=clima.toLowerCase()
 
 switch (climaMin){
     case "a":
