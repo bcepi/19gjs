@@ -14,3 +14,4 @@ console.log(str2) // en consola imprime la t
 
 let str4= str.concat(str3);
 console.log(str4) // en consola; 'Anita lava la tina, es un palindromo
+
