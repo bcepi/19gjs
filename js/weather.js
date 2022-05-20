@@ -25,7 +25,9 @@ if(tempC === null){
 
 let tempF = ( ( tempC * 9 ) / 5 ) + 32;
 
-switch (clima){
+let climaMin=clima.toLocaleLowerCase
+
+switch (climaMin){
     case "a":
         console.log(`En tu ciudad, el día está “Soleado” con una temperatura de ${tempF} °F`);
         break;
