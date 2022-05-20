@@ -10,3 +10,11 @@
 let str = 'hola mundo';
 let str1 = str.substring(0,4)
 console.log(str1)
+
+
+// let str = "Anita lava la tina";
+
+// //.charAt
+// let str2= str.charAt(3)
+// console.log(str2) // en consola imprime la t
+
