@@ -5,7 +5,7 @@
  * reversedString('hola') -> 'aloh'
  */
 
-function strReverse() {
+function reversedString() {
   let str = prompt("Introduzca una frase");
   let str2 = "";
   let longitudStr = str.length - 1;
@@ -28,17 +28,22 @@ function strReverse() {
  * -> addThreeNumbers() -> 'Faltan datos'
  */
 
-// let num1 = parseInt(prompt("Ingrese un numero"));
-// let num2 = parseInt(prompt("Ingrese un numero"));
-// let num3 = parseInt(prompt("Ingrese un numero"));
+let num1 = parseInt(prompt("Ingrese un numero"));
+let num2 = parseInt(prompt("Ingrese un numero"));
+let num3 = parseInt(prompt("Ingrese un numero"));
 
-// function sumaPara(p1, p2, p3 = 3) {
-//   return p1 + p2 + p3;
-// }
+function sumaPara(p1, p2, p3 = 3) {
+if(!p1 || !p2 || !p3){
+    console.log('Faltan datos')
+}  else{
+    return p1 + p2 + p3;
 
-// let sumaNumeros = sumaPara(num1, num2, num3);
+} 
+}
 
-// console.log(sumaNumeros);
+let sumaNumeros = sumaPara(num1, num2, num3);
+
+console.log(sumaNumeros);
 
 /**
  * Funcion que pida al usuario los grados Centigrados en su localidad
@@ -77,6 +82,21 @@ function tablas(num) {
   }
 }
 
+/**
+ * *************** Hibrido *******************************
+ * Funcion que imprima las tablas del 1 al 10 hasta el numero ingresado
+ */
+
+function tablasTodas(tabla){
+    for(let i = 1; i <= tabla; i++){
+        for(let j = 1; j <=10; j++){
+            let multi = i * j;
+            console.log(`${i} X ${j} = ${multi}`);
+        }
+        console.log('')
+    }
+}
+
 
 
 /**
@@ -88,7 +108,7 @@ function tablas(num) {
  * addNumberLimit(5) -> 15
  */
 
- function sumaNumeros(num = 3) {
+ function suma(num = 3) {
     let suma = 0;
   
     if (num > 1 && num < 100) {
