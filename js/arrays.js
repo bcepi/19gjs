@@ -2,14 +2,14 @@
 
 // invertir un array
 
-let arrayToReverse = [1, 2, 3, 4];
-let newArray= []
+// let arrayToReverse = [1, 2, 3, 4];
+// let newArray= []
 
-for( let i = arrayToReverse.length -1; i>=0 ; i--){
-    newArray.push(arrayToReverse[i])
-}
+// for( let i = arrayToReverse.length -1; i>=0 ; i--){
+//     newArray.push(arrayToReverse[i])
+// }
 
-console.log(newArray)
+// console.log(newArray)
 
 /**************** Metodos de array ****************
  * 
@@ -17,3 +17,8 @@ console.log(newArray)
  * 
  * *** arr.pop(item): muta el array original, saca el ultimo elemento 
  */
+
+// *******************METODO FORHEACH()*****************
+
+let arr = [1,2,3,4,5]
+
