@@ -1,151 +1,74 @@
-/**Arrow function
-     * pedir al usuario una cadena de texto
-     * verificar si la oracion es un palindromo
-     ********* TAREA***** solucion de palindromo, remover los acentos 
-
-     */
-
-const esPalindromo = (str) => {
-  let string = str
-    .toLowerCase()
-    .replace(/\s+/g, "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-zA-Z ]/g, "");
-  let stringReversed = "";
-
-  for (let i = string.length - 1; i >= 0; i--) {
-    stringReversed += string[i];
-  }
-
-  if (string === stringReversed) {
-    console.log("Es palindromo");
-  } else {
-    console.log("No es palindromo");
-  }
-};
-
-// ******************* TAREA ************************
-
+// Ejercicio
 /**
- * Ejercicio 1 *Obligatorio
- * Realizar una funcion que reciba como parametro 1 array
- * Y devuelva un array con solo los elementos Pares de ese array
- * p.ej.
- * -> evenOnly( [1,2,3,4,18] ) -> [2,4,18]
- * -> evenOnly( [10, 2, 5] ) -> [10,2]
- * -> evenOnly() -> 'Se necesita un array'
- *
+ * Del siguiente objeto
+ * Realizar una función que 
+ * 1. Calcule el numero de empleados
+ * 2. Obtenga el total a pagar
+ * employesAndTotal( { 'Albert': 50000, 'jorge': 50000 })
+ * -> Son 3 empleados y el total es 100000
  */
 
-const evenOnly = (array) => {
-  let newArray = [];
+ let salarios = {
+    'juan': 30000,
+    'Albert': 50000,
+    'jorge': 50000
+}
 
-  if (array == null) {
-    console.log("Se necesita un array");
-  } else {
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] % 2 === 0) {
-        newArray.push(array[i]);
-      }
+const employesAndTotal = ( obj ) => {
+    let suma = 0
+    let contador = 0
+
+    for(elemento in obj){
+        suma += obj[elemento]
+        contador ++
     }
-    console.log(newArray);
-  }
-};
+    return console.log(` Son ${contador} empleados y el total de los salarios es ${suma}`)
+}
+
+employesAndTotal(salarios)
+
 
 /**
- * Ejercicio 2 *Opcional
- * Funcion que reciba como parametro una array de strings
- * y devuelva el primer y ultimo caracter de cada string
- * p.ej.
- * -> firstAndLast ( ['hola', 'mundo'] ) -> ['ha', 'mo']
+ * Ejercicio 2.
+ * Dado un objeto inicial, hacer los siguientes puntos 
+ * 
+ * 1. Agregar el lenguaje 'Go' a la lista de lenguajes
+ * 2. Cambiar el nivel a 4
+ * 3. Eliminar la propiedad avatar
+ * 4. Agregar una nueva propiedad de edad y poner el valor de 30
+ * 5. Imprimir en consola todos los lenguajes dominados
+ * 6. Clonar el objeto en uno nuevo
+ * 7. Imprimir en consola el nuevo objeto
+ * 
+ * @hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
  */
 
-const firstAndLast = (array) => {
-  let newArray = [];
-  let str = "";
+let koder = {
+    languages: ["JavaScript", "Python", "Ruby"],
+    isMentor: true,
+    level: 3,
+    avatar: "https://picsum.photos/200/300"
+}
 
-  for (let i = 0; i < array.length; i++) {
-    if (array[i][1] === undefined) {
-      newArray.push(array[i][0]);
-    } else {
-      str = array[i];
-      newArray.push(`'${array[i][0]}','${array[i][str.length - 1]}'`);
-    }
-  }
-  console.log(newArray);
-};
-
-// Utilizando el metodo de slice y agregarle una validacion de que no sea null el array
-
-/**
- * Ejercicio 3
- * Estudiar todos los métodos de Array
- * https://www.w3schools.com/jsref/jsref_obj_array.asp
- * https://www.programiz.com/javascript/library/array
- *
- */
-
-//Shift, remueve el primer elemento del array y modifica el array original
-// let array = [1,2,3,4,5,6,7]
-
-// let outArray = array.shift()
-
-// console.log(outArray) // el uno
-// console.log(array) // [2,3,4,5,6,7]
-
-// ******************* TAREA ************************
+// * 1. Agregar el lenguaje 'Go' a la lista de lenguajes
+    koder.languages = ["JavaScript", "Python", "Ruby", 'Go']
+// * 2. Cambiar el nivel a 4
+    koder.level = 4
+// * 3. Eliminar la propiedad avatar
+    delete koder.avatar
+// * 4. Agregar una nueva propiedad de edad y poner el valor de 30
+    koder.edad = 30
+// * 5. Imprimir en consola todos los lenguajes dominados
+    console.log(koder.languages)
+// * 6. Clonar el objeto en uno nuevo
+    let koder2 = koder
+// * 7. Imprimir en consola el nuevo objeto
+    console.log(koder2)
 
 /**
- * Funcion que reciba una palabra
- * Retorne la palabra invertida
- *
- * reverseStr('hola mundo')
- * -> 'odnum aloh'
- *
- * Usar solo metodos de str y array
- */
-
-const reverseStr = (str) => {
-  let toArr = str.split("");
-  let reverseArr = toArr.reverse()
-  let result=reverseArr.join("")
-  console.log(result)
-  
-};
-
-
-/**
- * Funcion que reciba un array de numeros
- * y devuelva el promedio de todos los elementos
- *
- * getAverage( [10, 8, 9, 7] )
- * -> 8.5
- */
-
-let array = [1, 2, 3, 4, 5];
-
-const promedio = (arr) => {
-  let suma = 0;
-  arr.forEach((num) => {
-    suma += num;
-  });
-  let promedio = suma / arr.length;
-  console.log(promedio);
-};
-
-promedio(array);
-
-/**
- * Funcion que reciba un array de strings
- * y devuelva un array indicando si son palindromos o no
- *
- * arePalindrome( ['oso','juan', 'seres'] )
- * -> [true, false, true]
- */
-
-/**
- * Estudiar los métodos de array
- * .filter()
- * .reduce()
+ * Estudiar los metodos de objetos
+ * https://www.w3schools.com/js/js_object_methods.asp
+ * https://www.digitalocean.com/community/tutorials/how-to-use-object-methods-in-javascript
+ * https://www.programiz.com/javascript/library/object/assign
+ * 
  */
