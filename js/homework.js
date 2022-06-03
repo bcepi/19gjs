@@ -72,3 +72,6 @@ let koder = {
  * https://www.programiz.com/javascript/library/object/assign
  * 
  */
+
+// Metodo object.freeze()
+// previene la modificacion de las propiedades y el valor de un objeto
