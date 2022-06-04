@@ -8,32 +8,29 @@
     Replicar con JS este markup
  */
 
-// obtener el elemento ul del doc
-let listaDos = document.createElement('ul')
-listaDos.setAttribute('id','menu')
-listaDos.setAttribute('class','menu')
 
-let item1 = document.createElement('li')
-item1.textContent = ('Home')
-listaDos.appendChild(item1)
-item1.setAttribute('class','item__menu')
+const tarea1 = () =>{
+    const idUnorderList = document.createElement('ul')
 
-let item2 = document.createElement('li')
-item2.textContent = ('Products')
-listaDos.appendChild(item2)
-item2.setAttribute('class','item__menu')
+    const arrNombreMenus= ['Home','Products', 'About']
+
+    idUnorderList.setAttribute('id', 'menu')
+    idUnorderList.setAttribute('class', 'menu')
+
+    arrNombreMenus.forEach( (item) => {
+        let allListElement = document.createElement('li')
+        allListElement.textContent = (item)
+        allListElement.setAttribute('class', 'list__item')
+
+        idUnorderList.appendChild(allListElement)
+        
+    })
+
+    document.querySelector('body').appendChild(idUnorderList)
+    
+}
 
 
-let item3 = document.createElement('li')
-item3.textContent = ('About us')
-listaDos.appendChild(item3)
-item3.setAttribute('class','item__menu')
-
-
-let body = document.querySelector('body')
-body.appendChild( listaDos )
-
-// toDo hacerlo en un ciclo agregando los nombres a un arry
 
 
 /**
@@ -70,9 +67,13 @@ body.appendChild( listaDos )
 let listaTres = document.createElement('ul')
 
 koders.forEach((obj)=>{
-
+    let item = document.createElement('li')
+    item.textContent = (obj.name)
+    listaTres.appendChild(item)
 })
     
+
+// body.appendChild( listaTres )
 
 
 /**
@@ -88,3 +89,24 @@ koders.forEach((obj)=>{
  * Referencia: https://slack-files.com/TCRFJBKB6-F03J4CBCBA7-8b1c39e7bc
  * 
  */
+
+ const tarea3 = () => {
+    console.log('Ejecutando tarea 3')
+    let tbody = document.querySelector('tbody')
+    koders.forEach( (koder, index, arr) => {
+    
+        let tr = document.createElement('tr')
+        let tdName = document.createElement('td')
+        tdName.textContent = koder.name
+        tr.appendChild(tdName)
+        let tdAge = document.createElement('td')
+        tdAge.textContent = koder.age
+        tr.appendChild(tdAge)
+        let tdGen = document.createElement('td')
+        tdGen.textContent = koder.generation
+        tr.appendChild(tdGen)
+        console.log(tr)
+        tbody.appendChild(tr)
+        
+    })
+}
