@@ -36,11 +36,45 @@ const maskMail = (mail) =>{
 
 maskMail('bre_kc073@hotmail.com')
 
+
+
 /**
  * Escribir una funcion que convierta un string en formato camel case
  * p.ej
  * -> camelize("JavaScript Exercises") -> "JavaScriptExercises"
  */
+
+ let ejemplo= "JavaScript Exercises"
+
+const camelize = () =>{ 
+    let arrSeparadas = ejemplo.split(' ')
+
+    let arrCamel =[] 
+    
+    arrCamel.push(arrSeparadas[0].toLowerCase())
+    arrSeparadas.shift()
+   
+    arrSeparadas.forEach((palabra)=>{
+        let firstLetter=(palabra.slice(0,1).toUpperCase())
+        let secondLetter=(palabra.slice(1).toLowerCase())
+        let word= firstLetter+secondLetter
+        arrCamel.push(word)
+    })
+
+    let strCamel= arrCamel.toString().replace(",", "");
+    
+    return strCamel
+}
+
+camelize(ejemplo)
+
+ 
+
+
+
+ 
+
+
 
 
 /**
