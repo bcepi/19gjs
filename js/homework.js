@@ -449,28 +449,15 @@ koders.forEach((obj)=>{
   }
 ]
 
+/**
+ * Ejercicio 2
+ * Generar una funcion que reciba como parametro un string
+ * y filtre solo los objetos que 
+ * tengan en el name, username o email dicho string
+ * .filter()
+ * .forEach()
+ */
 
-const filterUsers = ( strToFilter ) => {
-  let inputField = document.querySelector('#filter_user')
-
-const setParameterToFilter = () => {
-  let inputValue = inputField.value.toLowerCase()
-  console.log(filterUsers(inputValue))
+const filterUsers = (arr) =>{
+  arr.filter(()=>{})
 }
-
-
-const filterUsers = ( strToFilter ) => {
-  return users.filter((cv) => {   
-    return cv.name.toLowerCase().match(strToFilter) || cv.email.toLowerCase().match(strToFilter) || cv.username.toLowerCase().match(strToFilter) 
-  })  
-}
-
-
-
-}
-
-document.addEventListener('keyboardEvent', function(){
-  filterUsers( strToFilter )})
-
-
-// filterUsers('brad')
