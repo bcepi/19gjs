@@ -458,6 +458,52 @@ koders.forEach((obj)=>{
  * .forEach()
  */
 
-const filterUsers = (arr) =>{
-  arr.filter(()=>{})
+
+const filterUsers = (str) =>{
+  let strMin= str.toLowerCase()
+  
+  let filterUsers = users.filter((cv)=>
+  {
+    if(
+      cv.name.toLowerCase().includes(strMin, 0) || 
+      cv.username.toLowerCase().includes(strMin, 0) ||
+      cv.email.toLowerCase().includes(strMin, 0)){
+        return cv
+      } 
+
+  })
+  return filterUsers
 }
+
+const loadResults = (users) => {
+  let template = users.reduce((acc, cv) => {
+    return acc += `
+      <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">${cv.name}</h5>
+              <small>  </small>
+          </div>
+
+          <p class="mb-1"> ${cv.email} </p>
+          <small>${cv.phone}</small>
+      </a>
+      <br>
+    `
+  },'')
+  
+  document.querySelector('#lista__users').innerHTML = template
+} 
+
+document.addEventListener('DOMContentLoaded', loadResults(users))
+
+
+let busqueda = document.querySelector("#filter__user")
+
+busqueda.addEventListener('keyup',() =>{
+  let searchValues = busqueda.value
+  let usersFiltered = filterUsers(searchValues)
+  console.log(usersFiltered)
+  //agregar ak leyout
+  // pintar phone name  email
+  
+})
