@@ -1,59 +1,101 @@
-// maqueta, proceso de editar el post 
+// maqueta, proceso de editar el post
 // sacar los valores de la maqueta
-// enviar cambios al servidor/base de datos   
+// enviar cambios al servidor/base de datos
 
-const koderEditar = (objUpdate) =>{
-  console.log(objUpdate)
-}
+let idKoder = window.location.search.substring(10);
+console.log(idKoder);
 
-let btnEditar = document.getElementById('editKoder')
-btnEditar.addEventListener('click', () => {
-  
-      // obtener los cambios 
-      let name = document.getElementById('nombre').value
-      let age = document.getElementById('edad').value
-      let biography = document.getElementById('biografia').value
-      let bootcamp = document.getElementById('bootcamp').value
-
-      console.log(name, age, biography, bootcamp)
-
-      let newKoder = {
-        name: name,
-        age: age,
-        biography: biography,
-        bootcamp: bootcamp
-      }
-  
-      console.log(newKoder)
-
-      // crear el objeto con los datos obtenidos del formulario 
-
-      let idKoder = window.location.search.substring(10)
-      console.log(idKoder)
-  
-    // hacer la edicion
-    const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
-      const xhttp = new XMLHttpRequest()
-      xhttp.open( method, `https://koders19gjs-default-rtdb.firebaseio.com${url}`, true)
-      xhttp.onload = function(data) {
-          if(data.target.status >= 200 && data.target.status <= 399){
-              let response = JSON.parse(data.target.response)
-              callback(response)
-          }
-      }
-      if(method === 'GET' || method === 'DELETE'){
-          xhttp.send()
-      } else {
-        xhttp.send( JSON.stringify(obj) )
-      }
+fetch(`https://k19gjs-default-rtdb.firebaseio.com/users/${idKoder}.json`)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(
+        `Algo salio mal, status: ${response.status} ${response.statusText} type: ${response.type}`
+      );
+    } else {
+      return response.json();
     }
-    
-    ajaxXHR(koderEditar, `/koders/${idKoder}.json`, 'PATCH', newKoder)
-  
-    // 'https://koders19gjs-default-rtdb.firebaseio.com/koders/.json'
+  })
+  .then((response) => {
+    console.log(response);
+    if (response) {
+      let { name, age, biography, bootcamp } = response;
+      // pintar esa informacion en el formulario
+      document.querySelector("#nombre").value = name;
+      document.querySelector("#edad").value = age;
+      document.querySelector("#bootcamp").value = bootcamp;
+      document.querySelector("#biografia").value = biography;
+    } else {
+      alert("Usuario no existente");
+    }
+  });
 
-    } )
+const koderEditar = (objUpdate) => {
+  console.log(objUpdate);
+};
+
+let btnEditar = document.getElementById("updateKoder");
+btnEditar.addEventListener("click", () => {
+  // obtener los cambios
+  let name = document.getElementById("nombre").value;
+  let age = document.getElementById("edad").value;
+  let biography = document.getElementById("biografia").value;
+  let bootcamp = document.getElementById("bootcamp").value;
+
+  console.log(name, age, biography, bootcamp);
+
+  let newKoder = {
+    name: name,
+    age: age,
+    biography: biography,
+    bootcamp: bootcamp,
+  };
+
+  console.log(newKoder);
+
+  // crear el objeto con los datos obtenidos del formulario
+
+  // hacer la edicion
+  fetch(`https://k19gjs-default-rtdb.firebaseio.com/users/${idKoder}.json`, {
+    method: "PATCH",
+    body: JSON.stringify(koderUpdated),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((finalResponse) => {
+      console.log(finalResponse);
+    })
+    .catch((err) => {
+      console.log(error);
+    });
+});
 
 
-
-  
+let btnEliminar = document.getElementById("deleteKoder");
+btnEliminar.addEventListener("click", () => {
+  // hacer el envio
+  fetch(`https://k19gjs-default-rtdb.firebaseio.com/users/${idKoder}.json`, {
+    method: "DELETE",
+  })
+    .then((response) => {
+      // comprobamos que el estatus de la respuesta es falso
+      if (!response.ok) {
+       
+        let err = new Error(
+          `Algo salio mal, status: ${response.status} ${response.statusText} type: ${response.type}`
+        );
+        throw err;
+      } else {
+        return response.json();
+      }
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});

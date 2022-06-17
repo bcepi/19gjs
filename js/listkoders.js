@@ -42,7 +42,7 @@ console.log('SU codigo para ver todos los koders')
 
 // crear conexion
 const xhttp = new XMLHttpRequest()
-xhttp.open( 'GET', `https://koders19gjs-default-rtdb.firebaseio.com/koders/.json`, true)
+xhttp.open( 'GET', `https://k19gjs-default-rtdb.firebaseio.com/users/.json`, true)
 xhttp.onload = function(data) {
     if(data.target.status >= 200 && data.target.status <= 399){
       let koders = JSON.parse(data.target.response)
@@ -57,7 +57,7 @@ xhttp.onload = function(data) {
               <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">${name} ${age} años</h5>
-                    <p class="card-text">${biography.slice(0, 20)}...</p>
+                    <p class="card-text">${biography}...</p>
                     <p class="card-text">${bootcamp}</p>
                     <a href="/interior.html?koderkey=${key}" class="btn btn-link">ver koder</a>
                     <a href="/updatekoder.html?koderkey=${key}" class="btn btn-link">Editar koder</a>
